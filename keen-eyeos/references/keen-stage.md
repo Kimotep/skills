@@ -1,7 +1,6 @@
 # Keen Stage — Keen EyeOS Sub-skill
 
-**Purpose**: Produce a visual, device-framed representation of the design. Turns wireframes
-into a staged mockup that communicates the design in context.
+**Purpose**: Turn confirmed wireframes into a staged representation of the design — a native SwiftUI file for implementation and an ASCII mockup for communication.
 
 **Invoke when**:
 - User asks "can I see what it would look like?"
@@ -15,8 +14,8 @@ into a staged mockup that communicates the design in context.
 
 ### 1. Device Frame
 > "Which device should we stage this in?"
-- A) iPhone 15 Pro (6.1", standard)
-- B) iPhone 15 Pro Max (6.7", large)
+- A) iPhone 16 Pro (6.1", standard)
+- B) iPhone 16 Pro Max (6.7", large)
 - C) iPhone SE (compact, smaller screen)
 - D) iPad Pro (large canvas)
 - E) Mac window (macOS app frame)
@@ -30,24 +29,42 @@ into a staged mockup that communicates the design in context.
 - Default: yes, it helps evaluate notch/Dynamic Island interaction
 
 ### 4. Fidelity Level
-> "How detailed should the mockup be?"
-- A) Structural (boxes and labels — fast, good for layout decisions)
-- B) Styled (typography, color, realistic component shapes)
-- C) Polished (as close to final as possible without Figma)
+> "How detailed should the output be?"
+- A) Structural — component hierarchy and layout only, no styling
+- B) Styled — adds font styles, spacing, semantic colors
+- C) Polished — full detail including animations, transitions, empty states, loading states, and accessibility modifiers
 
 ---
 
-## Rendering Approach
+## Primary Output: `keen-stage.swift`
 
-Based on the harness:
+A native SwiftUI view file. Rules:
 
-### ASCII (always available)
-Use for structural fidelity. Include:
-- Device outline with corner radius suggestion
-- Status bar row (if requested)
-- Screen content using box-drawing characters
-- Component labels
-- Bottom safe area / home indicator
+- Reflects the confirmed layout from Keen Wireframes
+- Uses correct SwiftUI component hierarchy (`NavigationStack`, `List`, `VStack`, `HStack`, etc.)
+- Applies semantic color tokens only — no hardcoded hex values (e.g. `.primary`, `.secondary`, `Color(.systemBackground)`, `Color.accentColor`)
+- Uses system font styles only (`.title`, `.headline`, `.body`, `.caption`, etc.)
+- Includes a `#Preview` macro so it renders in Xcode Canvas immediately
+- Uses placeholder data structs so the file compiles without external dependencies
+- Comments mark anything requiring real data, logic, or wiring
+- Respects safe areas, Dynamic Island, and platform conventions
+- Targets the OS floor defined in `[PROJECT_CONTEXT]`
+
+**Scaffolding note**: `keen-stage.swift` is a structural scaffold — correct component hierarchy and layout, not production-ready business logic. Wire it up after design is confirmed.
+
+### Fidelity applied to Swift output
+
+| Level | What's included |
+|---|---|
+| Structural | Component types and layout hierarchy. Minimal modifiers. |
+| Styled | Font styles, spacing, semantic colors, realistic shapes. |
+| Polished | Animations, transitions, empty states, loading states, accessibility modifiers. |
+
+---
+
+## Secondary Output: `keen-stage.md`
+
+A device-framed ASCII mockup of the same screen. Always produced alongside the Swift file. Used for presentation and stakeholder communication.
 
 ```
 ┌─────────────────────────┐
@@ -69,16 +86,17 @@ Use for structural fidelity. Include:
 └─────────────────────────┘
 ```
 
-### HTML/SVG (if artifact harness supports it)
-Render a styled device frame with proper proportions. Use CSS custom properties for color tokens.
-- iPhone frame: 390×844pt viewport at 2x scale representation
-- Use SF Pro–equivalent system font stack: `-apple-system, BlinkMacSystemFont`
-- Colors: use Apple's semantic palette (system backgrounds, labels, tints)
+Include:
+- Device outline with corner radius suggestion
+- Status bar row (if requested)
+- Screen content using box-drawing characters
+- Component labels
+- Bottom safe area / home indicator
 
 ---
 
-## Output
+## Deliverables
 
-- `keen-stage.md` containing the device mockup with annotations
-- If HTML artifact is produced: include a note that this is a layout reference, not production code
-- Always pair the stage with a summary of key design decisions visible in the mockup
+1. `keen-stage.swift` — SwiftUI scaffold at the requested fidelity level
+2. `keen-stage.md` — ASCII device mockup for the same screen
+3. A short summary of key design decisions visible in the output

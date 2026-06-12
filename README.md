@@ -16,12 +16,11 @@ Each skill is a prompt system that asks the right questions in the right order, 
 
 ---
 
-## The tumaini family
+## Shared design pattern
 
 `socratic-agentic-workflow` and `tumaini-voice` share an operating pattern — a time-boxed 
 Socratic interview, always-ask-never-assume, assumption classification, and pause/resume via 
-a `STATE.md` checkpoint. One plans agentic systems; the other builds personalized writers. 
-Future skills following this pattern will be added here under the same `tumaini-` branding.
+a `STATE.md` checkpoint. One plans agentic systems; the other builds personalized writers.
 
 ---
 

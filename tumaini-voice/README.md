@@ -67,7 +67,7 @@ tumaini-voice/
 
 ---
 
-## Part of the tumaini family
+## Shares a design pattern with socratic-agentic-workflow
 
 This skill shares its operating principles with 
 [socratic-agentic-workflow](../socratic-product/README.md) — same Socratic interview pattern, 

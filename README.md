@@ -11,7 +11,17 @@ Each skill is a prompt system that asks the right questions in the right order, 
 | Skill | What it does | Output |
 |---|---|---|
 | [keen-eyeos](./keen-eyeos/) | Apple platform design companion — guides intent, structure, and component selection | Design plan, wireframes, dev spec, mockup |
-| [socratic-product](./socratic-product/) | Pre-code agentic system design via structured Socratic interview | Mission, agents, scaffold, logic, handover docs |
+| [socratic-product](./socratic-product/) (socratic-agentic-workflow) | Pre-code agentic system design via structured Socratic interview | Mission, agents, scaffold, logic, handover docs |
+| [tumaini-voice](./tumaini-voice/) | Builds a personalized writer skill via structured Socratic interview, optionally informed by writing samples | An installable writer skill: voice profile + per-format reference docs |
+
+---
+
+## The tumaini family
+
+`socratic-agentic-workflow` and `tumaini-voice` share an operating pattern — a time-boxed 
+Socratic interview, always-ask-never-assume, assumption classification, and pause/resume via 
+a `STATE.md` checkpoint. One plans agentic systems; the other builds personalized writers. 
+Future skills following this pattern will be added here under the same `tumaini-` branding.
 
 ---
 

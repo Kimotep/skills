@@ -197,7 +197,10 @@ Read [slug]-MISSION.md first if you need context. Otherwise, start here.
 Do not leave this blank — if nothing is open, write "None — all decisions confirmed."]
 
 ## Named assumptions
-[Any assumptions the LLM made during the session that the builder should verify.]
+[Ledger format. For each assumption, one line:
+- **[Assumption]** — [why it was made]. *Safe to defer — resolve by: [build step].*
+Blocking assumptions should not appear here — they should have been resolved during synthesis 
+(see SYNTHESIS.md). If "none", write "None — all decisions confirmed."]
 
 ## Recommended build order
 1. [First thing to do]
@@ -220,6 +223,33 @@ referencing the scaffold and mission doc.]
 → Then [slug]-SCAFFOLD.md to set up the structure.  
 → Then [slug]-AGENTS.md to define agent files.  
 → Use [slug]-LOGIC.md as the reference during build.
+```
+
+---
+
+## Conditional file — `[slug]-STATE.md`
+
+Only generated if the session is paused before synthesis (see "Pause and resume" in 
+[`INTERVIEW.md`](./INTERVIEW.md)). Replaces the full file set for this session — do not 
+generate the five files above if this file is generated instead.
+
+```
+# [Project name] — session state
+
+## Resolved themes
+[Each of the 8 themes that reached "resolved" status, with a one-line summary of what was 
+confirmed.]
+
+## Open themes
+[Remaining themes, with whatever the user has said so far — even if rough or contradictory. 
+Don't smooth it over; the next session needs the raw material as given.]
+
+## In the user's own words
+[Direct quotes or close paraphrases of anything the user kept returning to — the drift signal 
+for the next session.]
+
+## Resume instructions
+Pick up with [next theme]. Do not re-ask resolved themes unless the user wants to revisit them.
 ```
 
 ---

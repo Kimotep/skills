@@ -7,15 +7,17 @@ description: >
   to think through multi-agent logic, file scaffolding, or system design for an LLM-powered 
   project. This skill runs a structured, time-boxed Socratic interview (target: 30 minutes) 
   and produces a linked set of MD documents ready for handover to a builder or coding agent.
-author: Kim Tumaini Jørgensen
-version: 0.1.0
 license: MIT
-outputs:
-  - MISSION.md
-  - AGENTS.md
-  - SCAFFOLD.md
-  - LOGIC.md
-  - HANDOVER.md
+metadata:
+  author: Kim Tumaini Jørgensen
+  version: 0.2.0
+  outputs:
+    - MISSION.md
+    - AGENTS.md
+    - SCAFFOLD.md
+    - LOGIC.md
+    - HANDOVER.md
+    - STATE.md  # only if the session is paused before synthesis
 ---
 
 # Socratic agentic workflow skill
@@ -26,7 +28,10 @@ MD documents that capture intent, structure, and rationale, ready for handover t
 or human builder.
 
 **Target session length: 30 minutes.**  
-**Do not write code. Do not suggest implementation details. Stay at the logic and intent layer.**
+**Do not write code. Stay at the logic and intent layer.** Implementation context — where the 
+system runs, what tools or platforms it must use, how credentials are handled — is still in 
+scope. That's what theme 6 (Constraints) is for. The line to hold is "no code", not "no 
+implementation".
 
 ---
 

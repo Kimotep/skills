@@ -16,6 +16,28 @@ the user a single question.
 
 ---
 
+## Pause and resume
+
+Around the 15-minute mark, take stock. If most themes are still open and the user seems to be 
+discovering the idea as they go — long pauses, "let me think about that", answers that revise 
+earlier ones — the 30-minute frame won't hold, and compressing harder will just produce a 
+worse output. Offer a way out instead:
+
+> "We're about halfway through and there's a lot still open — that's normal for an idea that's 
+> still taking shape. We can keep going, or I can save where things stand and you pick this up 
+> fresh next session. Either's fine."
+
+If the user chooses to pause, skip synthesis and output entirely. Write a single 
+`[slug]-STATE.md` file (see [`OUTPUT.md`](./OUTPUT.md)) capturing what's resolved, what's open, 
+and the user's own words on anything still fuzzy. The next session reads this file first and 
+resumes from where the theme list left off — it does not restart the interview.
+
+This is distinct from compression in the pacing rules above: compression is for an idea the 
+user knows cold but where time ran short on a tighter topic. Pausing is for an idea that isn't 
+fully formed yet. If unsure which applies, ask the user directly.
+
+---
+
 ## The 8 mandatory themes
 
 Work through all 8. Order is flexible — let conversation flow — but every theme must be 

@@ -31,6 +31,26 @@ Before saying anything to the user, do a silent review across all 8 themes:
 
 If any item is unresolved, go back and ask before continuing.
 
+### Classify named assumptions
+
+For each named assumption, decide:
+
+- **Safe to defer** — a build-time detail with low blast radius. Getting it wrong costs a 
+  small fix, not a rework (e.g. exact retry count, a log message format).
+- **Blocking** — touches agent roles, the scaffold, or the system's critical path. Getting it 
+  wrong means the builder undoes structural work later.
+
+If an assumption looks blocking, don't let it ride as an assumption. Go back through the 
+vagueness protocol — reflect it back, offer concrete options — before continuing. Only 
+genuinely low-stakes details should reach the output tagged "safe to defer".
+
+### Check for load-bearing boundaries
+
+Revisit the out-of-scope answers from theme 5. Some are simple "not our job" statements — fine 
+to leave as-is in MISSION.md. Others actively shape system flow (e.g. "the crawler runs exactly 
+two passes, never a third hop"). If a boundary changes branching or flow, flag it for LOGIC.md 
+too — as an active constraint on the flow, not just a stated boundary.
+
 ---
 
 ## Step 2 — present a synthesis summary
@@ -49,7 +69,9 @@ Show the user a compact summary of what the system will document. Use this forma
 > **Success looks like:** [observable signal]  
 > **Handover to:** [who/what, first action]  
 >
-> **Assumptions made:** [list any named assumptions, or "none"]  
+> **Assumptions made:** [list any named assumptions, each tagged (safe to defer / blocking), 
+> or "none"]  
+> **Load-bearing boundaries:** [out-of-scope items that also constrain LOGIC.md, or "none"]  
 > **Contradictions resolved:** [summary, or "none"]
 
 Then ask:

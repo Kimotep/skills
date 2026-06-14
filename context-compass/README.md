@@ -4,7 +4,7 @@ A skill for Claude that's a fast, always-on warm-up for starting anything with a
 
 You describe what's on your mind — rough is fine. A few quick multiple-choice-plus-freeform
 questions sharpen it, surface a couple of things you probably haven't decided yet, and the
-result is a prompt ready to hand to an agent — this session or a new one.
+result is a brief — ready to start on right here, or hand off to another chat or agent.
 
 **Target time: a few minutes.** Use it constantly, not just for big things.
 
@@ -12,7 +12,7 @@ result is a prompt ready to hand to an agent — this session or a new one.
 
 ## What it produces
 
-A ready-to-run prompt or brief, shown directly in chat:
+A ready-to-run brief, shown directly in chat:
 
 ```
 [What needs doing]
@@ -26,7 +26,12 @@ Constraints: [if any]
 First step: [one concrete action]
 ```
 
-Optionally saved as `[slug]-BRIEF.md` if you want a copy.
+Then, depending on where you said it's going:
+
+- **Start now** — the skill skips straight from the brief into doing the first step, in
+  this same session, using the brief as its operating spec
+- **Hand off / someone else / not sure** — you're asked whether to use it as-is, adjust it,
+  or save it as `[slug]-BRIEF.md`
 
 ---
 
@@ -76,7 +81,7 @@ it needs that level of depth.
 
 ## Status
 
-Version 0.1.0 — initial release. See [CHANGELOG.md](./CHANGELOG.md).
+Version 0.2.0. See [CHANGELOG.md](./CHANGELOG.md).
 
 Feedback welcome via [tumaini.dk](https://tumaini.dk) or GitHub issues.
 

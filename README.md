@@ -13,7 +13,7 @@ Each skill is a prompt system that asks the right questions in the right order, 
 | [keen-eyeos](./keen-eyeos/) | Apple platform design companion — guides intent, structure, and component selection | Design plan, wireframes, dev spec, mockup |
 | [socratic-product](./socratic-product/) (socratic-agentic-workflow) | Pre-code agentic system design via structured Socratic interview | Mission, agents, scaffold, logic, handover docs |
 | [tumaini-voice](./tumaini-voice/) | Builds a personalized writer skill via structured Socratic interview, optionally informed by writing samples | An installable writer skill: voice profile + per-format reference docs |
-| [context-compass](./context-compass/) | Quick, always-available warm-up — sharpens a rough idea via multiple-choice + freeform questions and surfaces angles you hadn't considered | A ready-to-run prompt or brief |
+| [context-compass](./context-compass/) | Quick, always-available warm-up — sharpens a rough idea via multiple-choice + freeform questions and surfaces angles you hadn't considered | A ready-to-run brief — or jumps straight into doing the work if you say "start now" |
 
 ---
 

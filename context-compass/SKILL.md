@@ -8,21 +8,23 @@ description: >
   actually need", or any request to scope, frame, or kick off a task before diving in. This
   is a quick, always-available skill (a few minutes, not a long session) — every question is
   multiple choice with a free-text option, in plain language. It surfaces angles the user
-  may not have considered, then produces a ready-to-run prompt or brief for an agent session.
+  may not have considered, then produces a ready-to-run brief — and, if the user wants to
+  start right away, moves straight from interview into doing the work in this same session.
 license: MIT
 metadata:
   author: Kim Tumaini Jørgensen
-  version: 0.1.0
+  version: 0.2.0
   outputs:
-    - A ready-to-run prompt or brief, shown in chat (optionally saved as [slug]-BRIEF.md)
+    - A ready-to-run brief, shown in chat (optionally saved as [slug]-BRIEF.md) — or, if the
+      user chooses to start now, direct execution of the task in this session
 ---
 
 # context-compass
 
 A fast, always-on warm-up for starting anything with an agent. You describe what's on your
 mind — rough is fine. A few quick questions sharpen it, surface a couple of things you might
-not have thought about yet, and the result is a prompt ready to hand to an agent (this
-session or a new one).
+not have thought about yet, and the result is a brief — ready to hand to another agent, or
+to start working on right here, immediately.
 
 **Target time: a few minutes.** This is the opposite of a deep interview — use it constantly,
 not just for big things.
@@ -104,9 +106,9 @@ likely relevant.)
 
 Ask, multiple choice + freeform:
 
-> "Who's this for?"
-> A) You, right now — paste it into this or a new chat
-> B) A coding agent (e.g. Claude Code)
+> "Where does this go next?"
+> A) Start now — right here in this chat
+> B) Hand it off — paste into a new chat or coding agent
 > C) Someone else — a teammate or contractor
 > D) Not sure yet — just want it written down
 
@@ -114,7 +116,7 @@ Ask, multiple choice + freeform:
 
 ## Output
 
-Produce the result directly in chat — no preamble, just the prompt:
+Always produce the brief first, directly in chat — no preamble:
 
 ```
 [One or two sentences: what needs doing]
@@ -128,7 +130,15 @@ Constraints: [from Step 4, or "None specified"]
 First step: [one concrete action to start with]
 ```
 
-Then ask:
+What happens next depends on Step 5:
+
+**A) Start now.** Skip the "ready to use" question entirely. Say something short like "Got
+it — starting now" and go straight into the First step, using Context, Decided, and
+Constraints as the operating brief for the rest of the session. If the task is multi-step,
+set up a task list from the brief before starting. Don't re-ask anything the interview
+already resolved — the brief is the spec now.
+
+**B–D) Hand off, someone else, or not sure.** Ask:
 
 > "Ready to use as-is, want any of it adjusted, or should I save this as a file?"
 
@@ -164,3 +174,6 @@ just ask it.
 
 **Fast by default.** If in doubt, ask one fewer question, not one more. The user can always
 ask for more depth.
+
+**The brief is the spec, not a draft.** Once the interview ends and the user chose "start
+now," the decisions are made — execute against them rather than re-litigating or re-asking.

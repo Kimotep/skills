@@ -5,14 +5,14 @@ description: >
   Trigger when the user needs help with native SwiftUI/UIKit component selection,
   screen or feature design, UI polish, wireframes, design specs, or HIG compliance.
   Also trigger for phrases like "my UI feels off", "which component should I use",
-  "does this feel like an Apple app", or "design my feature". See README.txt for
+  "does this feel like an Apple app", or "design my feature". See README.md for
   full background and creator intent.
 ---
 
 # Keen EyeOS
 
 A structured design companion for Apple platform projects.
-See `README.txt` for full background, creator intent, and scope.
+See `README.md` for full background, creator intent, and scope.
 
 **Token strategy:** SKILL.md is always in context. All reference files load lazily —
 only what the session needs, gated by the choices below.
@@ -209,4 +209,4 @@ Component files (load per Step 1 + platform):
 | `component-guide-platform.md` | iPad/Mac + Practised+ | medium |
 | `language-guide.md` | Mid-session recalibration only | small |
 | `output-templates.md` | Per output chosen in Step 3 | medium |
-| `README.txt` | User asks about skill background/intent | small |
+| `README.md` | User asks about skill background/intent | small |

@@ -14,7 +14,7 @@ description: >
 license: MIT
 metadata:
   author: Kim Tumaini Jørgensen
-  version: 0.1.0
+  version: 0.2.0
   family: tumaini
   outputs:
     - "[slug]/SKILL.md"
@@ -89,6 +89,15 @@ of compressing the rest. See INTERVIEW.md.
 Early in the session, once the purpose is clear, propose a name for the new writer skill — 
 kebab-case, optionally in the `tumaini-` family if the user wants it branded that way. The 
 user confirms or changes it. All output is written into a folder with that name.
+
+**Use interactive question UI when available.**  
+If the runtime provides a structured multiple-choice question tool (e.g., Cowork's 
+`AskUserQuestion` — 1-4 questions per call, each with 2-4 options plus an automatic "Other" 
+free-text option), use it for the per-theme questions in INTERVIEW.md instead of typing them 
+as plain chat text. Reserve plain conversational text for reflections, summaries, the 
+vagueness protocol, contradiction handling, and synthesis — anything needing more nuance than 
+pick-one-or-type-your-own. If no such tool exists, fall back to the conversational format. 
+See "Using interactive question tools" in INTERVIEW.md.
 
 ---
 

@@ -20,6 +20,34 @@ single question.
 
 ---
 
+## Using interactive question tools
+
+If the runtime exposes a structured question tool (e.g., Cowork's `AskUserQuestion` — up to 
+4 multiple-choice questions per call, each with 2-4 options plus an automatic "Other" 
+free-text option), use it for the theme questions below instead of typing them as plain chat 
+text:
+
+- Turn each theme's "Key questions to draw out" into 1-4 short questions per call, matching 
+  the 2-4-questions-per-exchange pacing rule above. Word options the way a user might phrase 
+  the answer themselves — "Other" always covers anything not listed.
+- After the user answers, briefly summarise what was chosen/typed before moving on, same as 
+  for conversational answers.
+- Use plain conversational text instead for: reflections and summaries, the vagueness 
+  protocol, contradiction handling, sample analysis discussion, drift detection, and 
+  synthesis — anything needing back-and-forth nuance rather than pick-one-or-type-your-own.
+- If no such tool is available, ask everything conversationally as described throughout this 
+  document.
+
+**Example — theme 3 (voice and personality) as structured questions:**
+- "How formal should this voice be?" → Casual / Conversational / Professional but warm / 
+  Formal (+ Other)
+- "Which person does this voice write in?" → First person ("I") / Second person ("you") / 
+  Third person or brand voice (+ Other)
+- "Is humor part of this voice?" → No, rarely / Dry or understated / Playful / 
+  Self-deprecating (+ Other)
+
+---
+
 ## The 8 themes
 
 Work through all 8. Order is flexible — let conversation flow — but every theme must be 

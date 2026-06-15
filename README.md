@@ -12,6 +12,14 @@ If you're using Claude specifically, each folder can also be installed directly 
 
 ---
 
+## See it in action
+
+You say: *"I want to build a habit tracker app but I'm not sure what to focus on first."*
+→ context-compass asks a few quick questions (what's already decided, what you haven't thought about, where this is going)
+→ You get: a ready-to-run brief — goal, context, one concrete first step — in under five minutes.
+
+---
+
 ## Who this is for
 
 - **Solo builders & indie hackers** who want to scope an idea before opening an editor

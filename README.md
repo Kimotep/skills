@@ -1,8 +1,10 @@
 # Kimotep Skills
 
-**A curated library of Claude Skills** — structured prompt systems that help you think clearly *before* you design, build, plan, or write.
+**A curated library of AI prompt systems** — structured prompts that help you think clearly *before* you design, build, plan, or write.
 
-Each skill is a self-contained system prompt (`SKILL.md`) you can drop into Claude Code, Claude Desktop, Cowork, or any Claude Agent SDK project. Instead of guessing what to ask, the skill asks *you* — in the right order — then hands back something concrete: a brief, a design spec, a project plan, or a new writer skill in your own voice.
+Each one is a self-contained system prompt (`SKILL.md`) — paste it into ChatGPT, Claude, Gemini, or any AI assistant that takes custom instructions. Instead of guessing what to ask, it asks *you* — in the right order — then hands back something concrete: a brief, a design spec, a project plan, or a new writer skill in your own voice.
+
+If you're using Claude specifically, each folder can also be installed directly as a Claude Skill — see [Quick start](#quick-start).
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 ![Skills](https://img.shields.io/badge/skills-4-blue)
@@ -23,8 +25,10 @@ Each skill is a self-contained system prompt (`SKILL.md`) you can drop into Clau
 
 1. Pick a skill below and open its folder.
 2. Either:
-   - copy the contents of its `SKILL.md` and paste it as a system prompt, **or**
-   - install the folder as a skill in Claude Code, Cowork, or Claude Desktop.
+   - copy the contents of its `SKILL.md` and paste it as a system prompt or custom 
+     instructions in your AI assistant of choice (ChatGPT, Claude, Gemini, etc.), **or**
+   - if you're using Claude: install the folder directly as a Skill in Claude Code, Cowork, 
+     or Claude Desktop.
 3. Describe what you're working on — the skill takes it from there with guided questions.
 
 No setup, no dependencies, no API keys.
@@ -47,7 +51,7 @@ No setup, no dependencies, no API keys.
 - **"I have a vague idea for a side project and don't know where to start."** → `context-compass` turns it into a brief in under five minutes, or starts building right away.
 - **"My SwiftUI settings screen feels off, but I can't say why."** → `keen-eyeos` diagnoses the issue and recommends the native fix, with platform-aware reasoning.
 - **"I want to build a multi-agent research tool but don't want to start coding blind."** → `socratic-product` runs a 30-minute structured interview and hands you `MISSION.md`, `AGENTS.md`, `SCAFFOLD.md`, `LOGIC.md`, and `HANDOVER.md`.
-- **"I want Claude to write newsletter drafts that actually sound like me."** → `tumaini-voice` interviews you (and reads your writing samples) and outputs a new, installable "writes like you" skill.
+- **"I want my AI to write newsletter drafts that actually sound like me."** → `tumaini-voice` interviews you (and reads your writing samples) and outputs a new, installable "writes like you" skill.
 
 ---
 
@@ -63,7 +67,7 @@ No setup, no dependencies, no API keys.
 └── README.md
 ```
 
-Each skill folder follows the same pattern: `SKILL.md` (entry point — paste as a system prompt or install directly), `README.md` (full docs), `CHANGELOG.md` (version history), and a `references/` folder where needed.
+Each skill folder follows the same pattern: `SKILL.md` (entry point — paste as a system prompt anywhere, or install directly if you're using Claude), `README.md` (full docs), `CHANGELOG.md` (version history), and a `references/` folder where needed.
 
 ---
 

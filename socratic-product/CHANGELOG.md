@@ -1,5 +1,32 @@
 # Changelog
 
+## v0.5.0
+
+Agent specs now meet a quality bar, the mission is checked against what already exists, and 
+the whole plan gets an index.
+
+- **New "Agent design pass" in SYNTHESIS.md.** Every agent role drafted in theme 4 is checked 
+  against five conventions: single responsibility with explicit boundaries, an input → 
+  output contract, a tool/context scope, a stated coordination role, and a 
+  failure/escalation path. Load-bearing gaps go through the vagueness protocol; minor gaps 
+  become safe-to-defer assumptions. No new interview questions.
+- **`[slug]-AGENTS.md` restructured per agent.** Each role now has Responsibility (with 
+  "Does NOT..." boundaries where relevant), Input → Output, Tools/context, Coordination 
+  role, and If it fails.
+- **New "Mission grounding pass" in OUTPUT.md.** If the idea has an obvious comparison point, 
+  uses `WebSearch` to check for similar tools and adds a factual "How this differs" section 
+  to `[slug]-MISSION.md`. Skipped (and noted as such) for internal/specific ideas.
+- **Architect pass now also surfaces pitfalls.** Alongside structure and tooling, it pulls 
+  2–3 stack-specific failure modes — from search or from `scaffold-patterns.md`'s new 
+  "Common pitfalls" line — into a new "Watch for" section in `[slug]-HANDOVER.md`.
+- **`[slug]-HANDOVER.md` gains a "Definition of done"** — a checklist version of 
+  `[slug]-MISSION.md`'s success criteria — and an **MVP cut line** in the recommended build 
+  order, separating the first working version from deliberate v2 work.
+- **New `[slug]-README.md`.** A short index generated last, linking all five other files 
+  with a one-line description and recommended read order. Output is now six files.
+- **`scaffold-patterns.md` now includes "Common pitfalls" per pattern**, alongside "Tooling 
+  defaults", as the fallback baseline for the architect pass's pitfall list.
+
 ## v0.4.0
 
 The scaffold is now grounded in current best practice, not just a cached pattern.

@@ -51,6 +51,28 @@ to leave as-is in MISSION.md. Others actively shape system flow (e.g. "the crawl
 two passes, never a third hop"). If a boundary changes branching or flow, flag it for LOGIC.md 
 too — as an active constraint on the flow, not just a stated boundary.
 
+### Agent design pass
+
+For each agent role drafted in theme 4, check it against five conventions:
+
+- **Single responsibility & boundaries** — one job, with an explicit "does NOT do" line if 
+  there's any realistic overlap with another agent.
+- **Input → output contract** — what it receives and what it returns, concretely (not just 
+  "data" or "a result").
+- **Tools/context scope** — what it needs access to, and nothing more.
+- **Coordination role** — orchestrator, worker, or peer, stated rather than implied by the 
+  coordination model paragraph alone.
+- **Failure/escalation path** — what happens if this agent fails or returns bad output: 
+  retry, fall back, escalate, or halt.
+
+If a role is missing one of these and it's load-bearing — the critical-path agent, or one 
+whose failure mode is genuinely unclear — treat the gap as blocking: resolve it via the 
+vagueness protocol before continuing. If it's a minor role and the gap is low-stakes (e.g. 
+exact retry count), treat it as a safe-to-defer assumption per the classification above.
+
+This pass doesn't require new interview themes — it's a sharper read of what theme 4 already 
+produced, and it shapes the per-agent structure of `[slug]-AGENTS.md`.
+
 ---
 
 ## Step 2 — present a synthesis summary

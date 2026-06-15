@@ -7,17 +7,20 @@ description: >
   to think through multi-agent logic, file scaffolding, or system design for an LLM-powered 
   project. This skill runs a structured, time-boxed Socratic interview (target: 30 minutes) 
   and produces a linked set of MD documents ready for handover to a builder or coding agent — 
-  including a starter repo structure tailored to the project's type and stack.
+  including a starter repo structure tailored to the project's type and stack, and agent 
+  specs written to a defined quality standard (responsibilities, I/O contracts, tool scope, 
+  and failure handling).
 license: MIT
 metadata:
   author: Kim Tumaini Jørgensen
-  version: 0.4.0
+  version: 0.5.0
   outputs:
-    - MISSION.md
-    - AGENTS.md
-    - SCAFFOLD.md  # now includes a starter repo structure tailored to the project type
+    - README.md  # index linking the other five files, generated last
+    - MISSION.md  # now includes "How this differs" from comparable tools
+    - AGENTS.md  # each agent now specced with I/O contract, tool scope, and failure path
+    - SCAFFOLD.md  # starter repo structure tailored to the project type
     - LOGIC.md
-    - HANDOVER.md
+    - HANDOVER.md  # now includes a definition of done and a "Watch for" pitfalls list
     - STATE.md  # only if the session is paused before synthesis
 ---
 
@@ -41,10 +44,11 @@ implementation".
 The skill runs in three phases:
 
 1. **Interview** — adaptive, Socratic questioning across 8 fixed themes plus drift detection
-2. **Synthesis** — AI reflects on answers, flags contradictions, surfaces assumptions
-3. **Output** — a silent architect pass grounds the scaffold in current best practice for the 
-   named stack (using `WebSearch` when relevant), then generates a named, linked set of MD 
-   files the user can take away
+2. **Synthesis** — AI reflects on answers, flags contradictions, surfaces assumptions, and 
+   runs an agent design pass that checks every agent role against five quality conventions
+3. **Output** — two silent pre-generation passes ground the scaffold and mission in current 
+   reality (using `WebSearch` when relevant), then generate a named, linked set of MD files — 
+   including an index file — the user can take away
 
 Read all linked documents before starting:
 - [`INTERVIEW.md`](./INTERVIEW.md) — question themes, pacing rules, and drift detection logic
@@ -88,7 +92,21 @@ Before generating `[slug]-SCAFFOLD.md`, run the architect pass in
 [`references/scaffold-patterns.md`](./references/scaffold-patterns.md), and if a specific 
 framework or tool was named, use `WebSearch` to confirm its current recommended structure 
 and tooling before committing to a layout. This is silent — it doesn't add questions to the 
-interview, it just means the output is grounded rather than guessed.
+interview, it just means the output is grounded rather than guessed. The same pass also 
+surfaces 2–3 stack-specific pitfalls for `[slug]-HANDOVER.md`'s "Watch for" section.
+
+**Agents are specced to a standard, not just named.**  
+During synthesis, every agent role is checked against five conventions: single 
+responsibility with explicit boundaries, a concrete input → output contract, a defined tool 
+and context scope, a stated coordination role, and a named failure/escalation path. Gaps 
+that are load-bearing get resolved via the vagueness protocol; minor gaps become 
+safe-to-defer assumptions. This is what `[slug]-AGENTS.md` is built from.
+
+**The mission is checked against what already exists.**  
+If the idea has an obvious comparison point ("a Zapier for X"), the mission grounding pass 
+in [`OUTPUT.md`](./OUTPUT.md) uses `WebSearch` to check for similar tools and adds a factual 
+"How this differs" note to `[slug]-MISSION.md`. If the idea is too specific or internal to 
+compare, this is skipped and noted as such — no search for the sake of it.
 
 ---
 

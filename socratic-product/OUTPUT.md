@@ -17,6 +17,7 @@ Examples: `jobbot`, `content-pipeline`, `daily-brief`
 
 All output files follow this pattern: `[slug]-[FILETYPE].md`  
 Example set for project "jobbot":
+- `jobbot-README.md`
 - `jobbot-MISSION.md`
 - `jobbot-AGENTS.md`
 - `jobbot-SCAFFOLD.md`
@@ -31,7 +32,9 @@ Tell the user the slug before generating files:
 
 ## File set — what to generate
 
-Generate all five files in every session. Do not skip any.
+Generate all six files in every session. Do not skip any. `[slug]-README.md` is generated
+last, since it indexes the other five — but list it first when presenting the set, since
+it's where the user starts reading.
 
 ---
 
@@ -57,6 +60,10 @@ The single source of truth for why this system exists.
 ## Out of scope
 [Bullet list of explicit boundaries — what this system does NOT do.]
 
+## How this differs
+[From the mission grounding pass below: how this differs from comparable tools, or "Not 
+applicable — internal/specific to [context]."]
+
 ## Assumptions
 [Any named assumptions from the interview, or "None."]
 
@@ -69,7 +76,8 @@ The single source of truth for why this system exists.
 
 ### `[slug]-AGENTS.md`
 
-Defines every agent role in the system.
+Defines every agent role in the system, to the standard set by the agent design pass in
+[`SYNTHESIS.md`](./SYNTHESIS.md).
 
 ```
 # [Project name] — agents
@@ -77,11 +85,15 @@ Defines every agent role in the system.
 ## Roles
 
 ### [Agent name]
-**Responsibility:** [One sentence.]  
+**Responsibility:** [One sentence — what this agent does. If there's realistic overlap with 
+another agent, add "Does NOT [x] — that's [other agent]'s job."]  
 **Triggered by:** [What starts this agent's work.]  
-**Input:** [What it receives.]  
-**Output:** [What it produces.]  
-**Hands off to:** [Next agent or endpoint, or "terminal".]
+**Input → Output:** [What it receives → what it produces, concretely.]  
+**Tools/context:** [What it needs access to — APIs, files, other agents' output. Nothing 
+more than that.]  
+**Coordination role:** [Orchestrator / worker / peer — and what it hands off to, or 
+"terminal".]  
+**If it fails:** [Retry / fall back / escalate / halt — and to whom or what.]
 
 [Repeat for each agent.]
 
@@ -99,38 +111,59 @@ One short paragraph.]
 
 ---
 
-### Architect pass — before generating SCAFFOLD.md
+## Pre-generation passes
 
-Run this silently, after synthesis is confirmed and before writing any files. It asks the
-user nothing new — it just makes sure SCAFFOLD.md reflects current best practice for what
-they're actually building, not a generic template.
+Run both of these silently, after synthesis is confirmed and before writing any files.
+Neither asks the user anything new — they make sure the output reflects reality (current
+practice, existing tools) rather than a guess or a cached template.
+
+### Architect pass — grounds SCAFFOLD.md and HANDOVER.md's "Watch for"
 
 1. Take the project type and stack named in theme 6.
 2. Look up the matching pattern in
    [`references/scaffold-patterns.md`](./references/scaffold-patterns.md) — this is the
-   starting skeleton and tooling baseline.
+   starting skeleton, tooling baseline, and common-pitfalls baseline.
 3. **If a specific framework or tool was named** (e.g. "Next.js", "FastAPI", "a Chrome
    extension", "a Typer CLI") and its conventions could plausibly have moved on since
    training, use `WebSearch` to check the current recommended project structure and standard
    tooling — folder layout, package manager, test framework, linter/formatter, env handling.
    Prefer official docs or the framework's own starter/scaffolding tool over blog posts.
 4. **If the stack is generic, very stable, or undecided**, skip the search — use the
-   scaffold-patterns.md pattern and its tooling defaults as-is. Don't search for the sake of
-   it.
+   scaffold-patterns.md pattern, its tooling defaults, and its common pitfalls as-is. Don't
+   search for the sake of it.
 5. Merge findings into the scaffold-patterns.md skeleton: keep what still applies, override
    anything search shows has changed, and use the result to fill in the structure and the
    `## Tooling` section below.
 6. If search meaningfully changes the *shape* of the structure (not just file names),
    say so in one line under "Notes on structure" — no need to narrate the research.
+7. Take 2–3 pitfalls or failure modes specific to this stack/pattern — from search if it
+   surfaced any (e.g. a known footgun in a framework's current version), otherwise from
+   scaffold-patterns.md's "Common pitfalls" line. These feed `## Watch for` in
+   `[slug]-HANDOVER.md`. If genuinely nothing stands out, write "[None specific — standard
+   practices for this stack apply.]"
 
-This pass changes only how the product layer of SCAFFOLD.md is structured and what tooling
-it specifies. It does not revisit scope, agents, or logic — those are already confirmed.
+This pass changes only the product layer of SCAFFOLD.md, its tooling, and the "Watch for"
+list. It does not revisit scope, agents, or logic — those are already confirmed.
+
+### Mission grounding pass — grounds MISSION.md's "How this differs"
+
+1. If the mission (theme 1) describes something with an obvious category or comparison
+   point (e.g. "like a Zapier for X", "a Slack bot that does Y"), use `WebSearch` to check
+   for existing tools that do something similar.
+2. If the idea is clearly internal, personal, or too specific to compare (e.g. "automates my
+   team's Friday status report"), skip the search — write "Not applicable — internal/specific
+   to [context]."
+3. Summarise in 1–2 factual sentences how this system differs from what's out there, or that
+   it's a novel combination. No promotional framing — this is for the builder, not a pitch.
+
+This pass does not change scope, success criteria, or anything else already confirmed — it
+only adds context for `## How this differs` in MISSION.md.
 
 ---
 
 ### `[slug]-SCAFFOLD.md`
 
-The starter structure for the project — both the planning layer (always the same five docs
+The starter structure for the project — both the planning layer (always the same six docs
 plus `agents/`/`rules/`) and the first commit of the actual product, tailored to what's being
 built and grounded in current best practice via the architect pass above.
 
@@ -150,11 +183,12 @@ library / undecided — plus stack or language, if named. If undecided, say so h
 ## Recommended structure
 
 [slug]/
-├── [slug]-MISSION.md        # Why this exists — read first
+├── [slug]-README.md         # Index — start here
+├── [slug]-MISSION.md        # Why this exists
 ├── [slug]-AGENTS.md         # Who does what
 ├── [slug]-SCAFFOLD.md       # This file
 ├── [slug]-LOGIC.md          # How it flows
-├── [slug]-HANDOVER.md       # What the builder needs — start here
+├── [slug]-HANDOVER.md       # What the builder needs
 ├── agents/
 │   ├── [agent-name].md      # Per-agent prompt/rules file, one per role in AGENTS.md
 │   └── ...
@@ -258,10 +292,26 @@ Do not leave this blank — if nothing is open, write "None — all decisions co
 Blocking assumptions should not appear here — they should have been resolved during synthesis 
 (see SYNTHESIS.md). If "none", write "None — all decisions confirmed."]
 
+## Definition of done
+[Checklist version of [slug]-MISSION.md's "Success looks like" — one checkbox per signal, 
+so the builder can tell when a first version is actually finished.]
+- [ ] [Signal 1]
+- [ ] [Signal 2]
+
 ## Recommended build order
+[Sequence agents/components so the critical path (from [slug]-AGENTS.md) works end-to-end 
+first. If the full system is more than a first version needs, mark where the MVP ends — 
+everything above the line is the first build target, everything below is a deliberate v2.]
+
 1. [First thing to do]
 2. [Second thing]
 3. [etc.]
+[— MVP ends here — *(omit this line if there's no meaningful cut)*]
+4. [Later addition]
+
+## Watch for
+[2–3 pitfalls or failure modes for this stack/pattern, from the architect pass in 
+OUTPUT.md — or "[None specific — standard practices for this stack apply.]"]
 
 ## Suggested first prompt (for coding agent handover)
 [A ready-to-use prompt the user can paste into Cursor or similar, 
@@ -283,11 +333,42 @@ referencing the scaffold and mission doc.]
 
 ---
 
+### `[slug]-README.md`
+
+A short index for the project plan. Generate this last, once the other five files exist, so
+the descriptions below are accurate rather than aspirational.
+
+```
+# [Project name]
+
+[One-sentence mission, taken from [slug]-MISSION.md's mission statement.]
+
+## Files in this plan
+
+| File | What's in it | Read it... |
+|---|---|---|
+| [slug]-HANDOVER.md | Decisions made, definition of done, build order, first prompt | First |
+| [slug]-MISSION.md | Why this exists, success criteria, how it differs from existing tools | For context |
+| [slug]-AGENTS.md | Agent roles, contracts, coordination, failure handling | Before building agents/ |
+| [slug]-SCAFFOLD.md | Starter repo structure and tooling | When setting up the repo |
+| [slug]-LOGIC.md | System flow, branches, and error states | While wiring agents together |
+
+## Quick start
+[1–2 sentences: create the structure in [slug]-SCAFFOLD.md, then start with 
+[slug]-HANDOVER.md's recommended build order.]
+
+---
+This plan was generated by a Socratic planning session — see [slug]-HANDOVER.md for what's 
+decided and what's still open.
+```
+
+---
+
 ## Conditional file — `[slug]-STATE.md`
 
 Only generated if the session is paused before synthesis (see "Pause and resume" in 
 [`INTERVIEW.md`](./INTERVIEW.md)). Replaces the full file set for this session — do not 
-generate the five files above if this file is generated instead.
+generate the six files above if this file is generated instead.
 
 ```
 # [Project name] — session state
@@ -312,13 +393,16 @@ Pick up with [next theme]. Do not re-ask resolved themes unless the user wants t
 
 ## Delivery format
 
-After generating all five files in chat, present them in this order:
+Generate the five linked files first, then `[slug]-README.md` last. Present them in chat in
+this order:
 
 1. Confirm the slug and file names
-2. Output each file in a clearly labelled fenced code block
+2. Output `[slug]-README.md` first (it's the index), then the other five in the order shown
+   in its table, each in a clearly labelled fenced code block
 3. End with:
 
-> "All five files are ready. Copy them into your project folder in any order —  
+> "All six files are ready, starting with `[slug]-README.md` as the index. Copy them into 
+> your project folder in any order —  
 > `[slug]-HANDOVER.md` is the best starting point for a builder or coding agent.  
 > Want to rename the project slug, adjust anything, or start a build session now?"
 

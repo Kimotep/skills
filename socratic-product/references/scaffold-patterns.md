@@ -14,9 +14,11 @@ If the project type doesn't match any pattern, or the user said "not sure yet", 
 **Undecided** pattern at the end.
 
 Each pattern includes a **Tooling defaults** line — a sensible baseline for package manager,
-test framework, linter/formatter, and env handling. Treat these as a fallback. Per the
-Architect pass in [`OUTPUT.md`](../OUTPUT.md), if a specific framework was named, current
-docs/conventions for that framework take precedence over these defaults.
+test framework, linter/formatter, and env handling — and a **Common pitfalls** line —
+failure modes worth flagging in `[slug]-HANDOVER.md`'s "Watch for" section. Treat both as a
+fallback. Per the Architect pass in [`OUTPUT.md`](../OUTPUT.md), if a specific framework was
+named, current docs/conventions and known issues for that framework take precedence over
+these defaults.
 
 ---
 
@@ -41,6 +43,11 @@ reference-only in token hygiene — rarely need to be in context.
 `.env` + `.env.example` for config. If a meta-framework was named (Next.js, Remix, Nuxt,
 SvelteKit, etc.), defer to that framework's current docs for structure and test setup.
 
+**Common pitfalls:** client/server state mismatches (hydration errors) on first render;
+client bundle growth from importing heavy modules into shared components; missing
+loading/error states for async data, so a slow or failed fetch looks broken rather than
+pending.
+
 ---
 
 ## CLI tool
@@ -62,6 +69,10 @@ so it's testable without invoking the CLI.
 language's standard test framework (pytest, Vitest/Jest, cargo test, go test); standard
 linter/formatter for that language (ruff/black, ESLint/Prettier, rustfmt, gofmt). Config via
 flags or a config file — CLIs rarely need `.env`.
+
+**Common pitfalls:** not handling piped/non-interactive input (no TTY) or non-zero exit
+codes consistently; flag parsing that drifts between subcommands; swallowing errors with a
+generic message instead of a useful one and a meaningful exit code.
 
 ---
 
@@ -85,6 +96,10 @@ permissions change.
 **Tooling defaults:** npm or pnpm; a build step (Vite or similar) targeting Manifest V3;
 Vitest or Jest for unit tests, Playwright for end-to-end if needed; ESLint + Prettier. No
 secrets in extension code — anything sensitive stays server-side.
+
+**Common pitfalls:** Manifest V3 service workers going idle and losing in-memory state
+between events; requesting broader permissions than needed, which slows store review;
+content scripts colliding with the host page's own JS/CSS.
 
 ---
 
@@ -110,6 +125,10 @@ stack); pytest or Vitest for tests, with particular attention to handoff and err
 tests; ruff/black or ESLint/Prettier; config/secrets referenced via env vars, never
 hardcoded.
 
+**Common pitfalls:** one agent's bad output cascading into the next with no validation at
+the handoff; retries without backoff or a max-attempts limit, causing runaway loops; prompts
+or logs that leak secrets or full user data into traces.
+
 ---
 
 ## API / backend service
@@ -132,6 +151,10 @@ ESLint + Prettier or ruff/black; `.env` + `.env.example`, plus a migration tool 
 Alembic) if there's a database. If a specific framework was named (FastAPI, Express, NestJS,
 etc.), defer to that framework's current docs for routing/testing conventions.
 
+**Common pitfalls:** missing input validation at the route boundary, pushing bad data into
+`services/`; N+1 queries once `routes/` and `models/` are split apart; no migration plan, so
+schema changes become manual and error-prone.
+
 ---
 
 ## Library / package (incl. a Claude skill)
@@ -153,6 +176,10 @@ for anything meant to be reused across projects rather than run as its own produ
 the language; standard linter/formatter for that language. For a Claude skill specifically,
 no package manager is needed — just the file structure above.
 
+**Common pitfalls:** breaking changes shipped without a version bump or changelog entry;
+undocumented side effects on import/load; `examples/` drifting out of sync with the actual
+current interface.
+
 ---
 
 ## Undecided
@@ -161,6 +188,7 @@ If project type or stack wasn't resolved in interview, don't invent one. Use:
 
 ```
 [slug]/
+├── [slug]-README.md
 ├── [slug]-MISSION.md
 ├── [slug]-AGENTS.md
 ├── [slug]-SCAFFOLD.md
@@ -178,3 +206,6 @@ And note in "Notes on structure":
 
 **Tooling defaults:** none — write "Deferred — see [slug]-HANDOVER.md" in the Tooling section
 of SCAFFOLD.md.
+
+**Common pitfalls:** none — write "[None specific — stack not yet decided.]" in
+[slug]-HANDOVER.md's "Watch for" section.

@@ -49,7 +49,7 @@ No setup, no dependencies, no API keys.
 |---|---|---|
 | [**context-compass**](./context-compass/) | You have a rough idea and want to sharpen it into a clear brief in a few minutes | A ready-to-run brief — or jumps straight into the work if you say "start now" |
 | [**keen-eyeos**](./keen-eyeos/) | You're designing for iOS, macOS, iPadOS, watchOS, or visionOS and want native-feeling UI, component picks, or HIG-aligned screens | Design plan, wireframes, dev handover spec, device mockup |
-| [**socratic-product**](./socratic-product/) *(socratic-agentic-workflow)* | You have an idea for an AI agent or multi-agent system and want to plan it before writing code | Mission, agent roles, a starter repo scaffold tailored to your project type, system logic, and handover docs |
+| [**socratic-product**](./socratic-product/) *(socratic-agentic-workflow)* | You have an idea for an AI agent or multi-agent system and want to plan it before writing code | An indexed plan: mission (with how it differs from existing tools), agent specs with contracts and failure paths, a starter repo scaffold tailored to your stack, system logic, and a handover doc with a definition of done |
 | [**tumaini-voice**](./tumaini-voice/) | You want an AI writer that sounds like you — for a blog, brand, or your own voice | An installable writer skill: voice profile + per-format reference docs |
 
 ---
@@ -58,7 +58,7 @@ No setup, no dependencies, no API keys.
 
 - **"I have a vague idea for a side project and don't know where to start."** → `context-compass` turns it into a brief in under five minutes, or starts building right away.
 - **"My SwiftUI settings screen feels off, but I can't say why."** → `keen-eyeos` diagnoses the issue and recommends the native fix, with platform-aware reasoning.
-- **"I want to build a multi-agent research tool but don't want to start coding blind."** → `socratic-product` runs a 30-minute structured interview and hands you `MISSION.md`, `AGENTS.md`, `SCAFFOLD.md`, `LOGIC.md`, and `HANDOVER.md`.
+- **"I want to build a multi-agent research tool but don't want to start coding blind."** → `socratic-product` runs a 30-minute structured interview and hands you an indexed plan: `README.md`, `MISSION.md`, `AGENTS.md`, `SCAFFOLD.md`, `LOGIC.md`, and `HANDOVER.md`.
 - **"I want my AI to write newsletter drafts that actually sound like me."** → `tumaini-voice` interviews you (and reads your writing samples) and outputs a new, installable "writes like you" skill.
 
 ---
@@ -93,7 +93,7 @@ All skills are MIT-licensed and actively maintained. See each skill's `CHANGELOG
 |---|---|
 | context-compass | 0.2.0 |
 | keen-eyeos | 1.0 |
-| socratic-product | 0.4.0 |
+| socratic-product | 0.5.0 |
 | tumaini-voice | 0.1.0 |
 
 ---

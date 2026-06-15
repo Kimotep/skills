@@ -99,31 +99,87 @@ One short paragraph.]
 
 ---
 
+### Architect pass — before generating SCAFFOLD.md
+
+Run this silently, after synthesis is confirmed and before writing any files. It asks the
+user nothing new — it just makes sure SCAFFOLD.md reflects current best practice for what
+they're actually building, not a generic template.
+
+1. Take the project type and stack named in theme 6.
+2. Look up the matching pattern in
+   [`references/scaffold-patterns.md`](./references/scaffold-patterns.md) — this is the
+   starting skeleton and tooling baseline.
+3. **If a specific framework or tool was named** (e.g. "Next.js", "FastAPI", "a Chrome
+   extension", "a Typer CLI") and its conventions could plausibly have moved on since
+   training, use `WebSearch` to check the current recommended project structure and standard
+   tooling — folder layout, package manager, test framework, linter/formatter, env handling.
+   Prefer official docs or the framework's own starter/scaffolding tool over blog posts.
+4. **If the stack is generic, very stable, or undecided**, skip the search — use the
+   scaffold-patterns.md pattern and its tooling defaults as-is. Don't search for the sake of
+   it.
+5. Merge findings into the scaffold-patterns.md skeleton: keep what still applies, override
+   anything search shows has changed, and use the result to fill in the structure and the
+   `## Tooling` section below.
+6. If search meaningfully changes the *shape* of the structure (not just file names),
+   say so in one line under "Notes on structure" — no need to narrate the research.
+
+This pass changes only how the product layer of SCAFFOLD.md is structured and what tooling
+it specifies. It does not revisit scope, agents, or logic — those are already confirmed.
+
+---
+
 ### `[slug]-SCAFFOLD.md`
 
-The recommended file and folder structure for the project.
+The starter structure for the project — both the planning layer (always the same five docs
+plus `agents/`/`rules/`) and the first commit of the actual product, tailored to what's being
+built and grounded in current best practice via the architect pass above.
+
+Take the project type named in theme 6, merge the architect pass's findings into the matching
+pattern from [`references/scaffold-patterns.md`](./references/scaffold-patterns.md), and
+build the tree below. Don't bolt the product layer on as a separate, unrelated block — it
+should read as one coherent structure. If project type was left undecided, use the Undecided
+pattern and say so plainly; don't invent a stack.
 
 ```
 # [Project name] — scaffold
 
+## Project type
+[From theme 6: web app / CLI tool / browser extension / agent pipeline / API service / 
+library / undecided — plus stack or language, if named. If undecided, say so here.]
+
 ## Recommended structure
 
 [slug]/
-├── [slug]-MISSION.md        # Why this exists
+├── [slug]-MISSION.md        # Why this exists — read first
 ├── [slug]-AGENTS.md         # Who does what
 ├── [slug]-SCAFFOLD.md       # This file
 ├── [slug]-LOGIC.md          # How it flows
-├── [slug]-HANDOVER.md       # What the builder needs
+├── [slug]-HANDOVER.md       # What the builder needs — start here
 ├── agents/
-│   ├── [agent-name].md      # Per-agent prompt/rules file
+│   ├── [agent-name].md      # Per-agent prompt/rules file, one per role in AGENTS.md
 │   └── ...
 ├── rules/
-│   └── [constraint-name].md # Named constraints and boundaries
-└── [any tool-specific config files noted in constraints]
+│   └── [constraint-name].md # Named constraints and boundaries from the interview
+[+ product-layer items from the matching scaffold-patterns.md entry, merged into the tree —
+   e.g. src/, tests/, config files, named and commented per that pattern]
+
+## Why each piece is here
+[One line per top-level item, grouped as: planning docs, agents/rules, product layer.
+Skip anything fully explained by its inline comment above — expand only on items that 
+aren't obvious from the comment, especially product-layer choices tied to the project type.]
+
+## Tooling
+[From the architect pass: package manager, test framework, linter/formatter, and env/config 
+handling — named concretely for the stack (e.g. "pnpm, Vitest, ESLint + Prettier, 
+.env.local"). If a specific framework's own convention covers one of these, say so (e.g. 
+"testing: Next.js + Vitest per current Next.js docs"). If stack is undecided, write 
+"Deferred — see [slug]-HANDOVER.md for first decision."]
 
 ## Notes on structure
-[Any project-specific explanations — why certain folders exist, 
-what should NOT be in the repo, naming decisions made.]
+[Project-specific explanations beyond the above — what should NOT be in the repo, naming 
+decisions made, anything about how the project type shaped this structure. If project type 
+is undecided, note that the product layer is deferred and "pick a stack" belongs in 
+[slug]-HANDOVER.md as an open decision.]
 
 ## Token hygiene
 [How to keep context lean: which files a coding agent should load per task, 

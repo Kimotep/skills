@@ -1,5 +1,40 @@
 # Changelog
 
+## v0.4.0
+
+The scaffold is now grounded in current best practice, not just a cached pattern.
+
+- **New "Architect pass" in OUTPUT.md.** Runs silently before SCAFFOLD.md is generated: 
+  starts from the matching `scaffold-patterns.md` entry, and if a specific framework or tool 
+  was named, uses `WebSearch` to confirm current recommended structure and tooling (folder 
+  layout, package manager, test framework, linter/formatter, env handling) before finalizing 
+  the layout. Skips search for generic or undecided stacks.
+- **New "## Tooling" section in SCAFFOLD.md.** Names the package manager, test framework, 
+  linter/formatter, and env/config handling concretely for the stack — or "Deferred" if the 
+  stack is undecided.
+- **`scaffold-patterns.md` now includes "Tooling defaults" per pattern** as a fallback 
+  baseline, explicitly overridable by the architect pass for named frameworks.
+- **New core principle**: the scaffold reflects current best practice for the named stack, 
+  not a guess — grounded via search when a specific framework is involved.
+
+## v0.3.0
+
+The output is now meant to be the actual first commit of the new project, not just a planning
+folder.
+
+- **Theme 6 (Constraints) now asks for project type and stack.** Web app, CLI tool, browser
+  extension, agent pipeline, API service, library, or "undecided" — plus language/stack if
+  known. Resolved-when criteria updated accordingly.
+- **New `references/scaffold-patterns.md`.** Starter repo skeletons for each project type,
+  each with inline comments and a short rationale. An "Undecided" pattern covers the case
+  where type/stack wasn't settled in interview.
+- **`[slug]-SCAFFOLD.md` now merges two layers.** The planning docs + `agents/`/`rules/`
+  folders (always present) plus a product-layer structure (`src/`, `tests/`, config, etc.)
+  picked from `scaffold-patterns.md` to match the project's type.
+- **New "Why each piece is here" section in SCAFFOLD.md.** One line per top-level item,
+  grouped by planning docs / agents-rules / product layer — expands on anything not already
+  obvious from its inline comment, especially product-layer choices.
+
 ## v0.2.0
 
 Changes based on dogfooding the skill on a real project — see 

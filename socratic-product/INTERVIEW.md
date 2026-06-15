@@ -107,11 +107,15 @@ Resolved when: at least one explicit out-of-scope boundary is stated.
 _What are the hard limits this system must respect?_
 
 Key questions to draw out:
+- What kind of thing is this — a web app, CLI tool, browser extension, agent pipeline/automation, 
+  API or backend service, library, or something else? If there's a stack or language in mind 
+  (or already in use), what is it?
 - Is there a token budget, cost ceiling, or latency requirement?
 - What tools, APIs, or platforms must (or must not) be used?
 - Where does this run — local, cloud, inside another tool like Cursor?
 
-Resolved when: at least one concrete constraint is named.
+Resolved when: at least one concrete constraint is named, and the project type is named — 
+even if the stack isn't decided yet ("a CLI tool, language TBD" is enough).
 
 ---
 

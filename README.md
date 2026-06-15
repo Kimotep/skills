@@ -37,7 +37,7 @@ No setup, no dependencies, no API keys.
 |---|---|---|
 | [**context-compass**](./context-compass/) | You have a rough idea and want to sharpen it into a clear brief in a few minutes | A ready-to-run brief — or jumps straight into the work if you say "start now" |
 | [**keen-eyeos**](./keen-eyeos/) | You're designing for iOS, macOS, iPadOS, watchOS, or visionOS and want native-feeling UI, component picks, or HIG-aligned screens | Design plan, wireframes, dev handover spec, device mockup |
-| [**socratic-product**](./socratic-product/) *(socratic-agentic-workflow)* | You have an idea for an AI agent or multi-agent system and want to plan it before writing code | Mission, agent roles, file scaffold, system logic, and handover docs |
+| [**socratic-product**](./socratic-product/) *(socratic-agentic-workflow)* | You have an idea for an AI agent or multi-agent system and want to plan it before writing code | Mission, agent roles, a starter repo scaffold tailored to your project type, system logic, and handover docs |
 | [**tumaini-voice**](./tumaini-voice/) | You want an AI writer that sounds like you — for a blog, brand, or your own voice | An installable writer skill: voice profile + per-format reference docs |
 
 ---
@@ -81,7 +81,7 @@ All skills are MIT-licensed and actively maintained. See each skill's `CHANGELOG
 |---|---|
 | context-compass | 0.2.0 |
 | keen-eyeos | 1.0 |
-| socratic-product | 0.2.0 |
+| socratic-product | 0.4.0 |
 | tumaini-voice | 0.1.0 |
 
 ---

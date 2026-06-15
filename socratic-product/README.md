@@ -18,7 +18,7 @@ a handover brief ready for a builder or coding agent.
 |---|---|
 | `[slug]-MISSION.md` | Why the system exists, success criteria, scope boundaries |
 | `[slug]-AGENTS.md` | Agent roles, responsibilities, coordination model |
-| `[slug]-SCAFFOLD.md` | Recommended folder and file structure |
+| `[slug]-SCAFFOLD.md` | Starter repo structure — planning docs plus a product layer tailored to the project's type and stack, with tooling choices grounded in current best practice |
 | `[slug]-LOGIC.md` | System flow diagram and logic notes |
 | `[slug]-HANDOVER.md` | Builder entry point, open questions, first prompt |
 | `[slug]-STATE.md` | *(conditional)* Session checkpoint if the interview is paused before completion |
@@ -42,6 +42,8 @@ socratic-agentic-workflow/
 ├── INTERVIEW.md     # Question themes, pacing, drift detection, pause/resume
 ├── SYNTHESIS.md     # Reflection, assumption classification, and confirmation phase
 ├── OUTPUT.md        # File generation rules and templates
+├── references/
+│   └── scaffold-patterns.md  # Starter repo skeletons by project type
 ├── CHANGELOG.md     # Version history
 └── README.md        # This file
 ```
@@ -54,6 +56,11 @@ socratic-agentic-workflow/
 - **Catches contradictions** — surfaces inconsistencies before they become build problems  
 - **Token efficient** — output is lean; every line earns its place
 - **Handover-ready** — output is structured for Cursor, other coding agents, or a human builder
+- **Scaffold matches the project** — the starter repo structure is picked from a library of 
+  patterns (web app, CLI, browser extension, agent pipeline, API, library) based on what's 
+  actually being built, not a generic template
+- **Grounded in current best practice** — an architect pass checks current conventions and 
+  tooling for any named framework via web search before finalizing the scaffold
 - **Time-boxed** — the whole session fits in 30 minutes, with a graceful pause/resume if an 
   idea isn't fully formed yet
 
@@ -61,9 +68,8 @@ socratic-agentic-workflow/
 
 ## Status
 
-Version 0.2.0. See [CHANGELOG.md](./CHANGELOG.md) for what's changed since v0.1.0 — most of it 
-came from dogfooding the skill on a real project, written up at 
-[Putting my /skills to use](https://www.tumaini.dk/posts/scraper).
+Version 0.4.0. See [CHANGELOG.md](./CHANGELOG.md). v0.2.0 came from dogfooding the skill on a 
+real project, written up at [Putting my /skills to use](https://www.tumaini.dk/posts/scraper).
 
 Feedback welcome via [tumaini.dk](https://tumaini.dk) or GitHub issues.
 

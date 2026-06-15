@@ -6,15 +6,16 @@ description: >
   "help me structure my agentic project", "I have an idea for an AI tool", or any request 
   to think through multi-agent logic, file scaffolding, or system design for an LLM-powered 
   project. This skill runs a structured, time-boxed Socratic interview (target: 30 minutes) 
-  and produces a linked set of MD documents ready for handover to a builder or coding agent.
+  and produces a linked set of MD documents ready for handover to a builder or coding agent — 
+  including a starter repo structure tailored to the project's type and stack.
 license: MIT
 metadata:
   author: Kim Tumaini Jørgensen
-  version: 0.2.0
+  version: 0.4.0
   outputs:
     - MISSION.md
     - AGENTS.md
-    - SCAFFOLD.md
+    - SCAFFOLD.md  # now includes a starter repo structure tailored to the project type
     - LOGIC.md
     - HANDOVER.md
     - STATE.md  # only if the session is paused before synthesis
@@ -41,12 +42,16 @@ The skill runs in three phases:
 
 1. **Interview** — adaptive, Socratic questioning across 8 fixed themes plus drift detection
 2. **Synthesis** — AI reflects on answers, flags contradictions, surfaces assumptions
-3. **Output** — generates a named, linked set of MD files the user can take away
+3. **Output** — a silent architect pass grounds the scaffold in current best practice for the 
+   named stack (using `WebSearch` when relevant), then generates a named, linked set of MD 
+   files the user can take away
 
 Read all linked documents before starting:
 - [`INTERVIEW.md`](./INTERVIEW.md) — question themes, pacing rules, and drift detection logic
 - [`SYNTHESIS.md`](./SYNTHESIS.md) — how to reflect, challenge, and confirm before generating output
 - [`OUTPUT.md`](./OUTPUT.md) — how to name, structure, and link the deliverable MD files
+- [`references/scaffold-patterns.md`](./references/scaffold-patterns.md) — starter repo
+  structures by project type, used when generating `[slug]-SCAFFOLD.md`
 
 ---
 
@@ -76,6 +81,14 @@ At the start of the session, the LLM proposes a project name based on the user's
 description. The user confirms or changes it. All output files are prefixed with that name 
 (e.g. `jobbot-MISSION.md`). The name can be changed at the end if needed — the LLM notes 
 where to rename.
+
+**The scaffold reflects current best practice, not a cached template.**  
+Before generating `[slug]-SCAFFOLD.md`, run the architect pass in 
+[`OUTPUT.md`](./OUTPUT.md): start from the matching pattern in 
+[`references/scaffold-patterns.md`](./references/scaffold-patterns.md), and if a specific 
+framework or tool was named, use `WebSearch` to confirm its current recommended structure 
+and tooling before committing to a layout. This is silent — it doesn't add questions to the 
+interview, it just means the output is grounded rather than guessed.
 
 ---
 

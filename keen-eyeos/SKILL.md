@@ -5,8 +5,11 @@ description: >
   Trigger when the user needs help with native SwiftUI/UIKit component selection,
   screen or feature design, UI polish, wireframes, design specs, or HIG compliance.
   Also trigger for phrases like "my UI feels off", "which component should I use",
-  "does this feel like an Apple app", or "design my feature". See README.md for
-  full background and creator intent.
+  "does this feel like an Apple app", or "design my feature". For quick one-off
+  questions, answers directly in chat. For design work, produces a structured spec:
+  component recommendations, layout rationale, HIG compliance notes, and optionally
+  a wireframe or annotated screen description — ready to hand to a developer or
+  paste into a design brief.
 ---
 
 # Keen EyeOS

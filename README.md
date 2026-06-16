@@ -7,7 +7,7 @@ Each one is a self-contained system prompt (`SKILL.md`) — paste it into ChatGP
 If you're using Claude specifically, each folder can also be installed directly as a Claude Skill — see [Quick start](#quick-start).
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
-![Skills](https://img.shields.io/badge/skills-4-blue)
+![Skills](https://img.shields.io/badge/skills-5-blue)
 ![Status](https://img.shields.io/badge/status-active-brightgreen)
 
 ---
@@ -26,6 +26,7 @@ You say: *"I want to build a habit tracker app but I'm not sure what to focus on
 - **Apple platform developers & designers** who want native-feeling SwiftUI/UIKit UI without guessing
 - **Founders & PMs** planning multi-agent or AI workflow systems before writing any code
 - **Writers, marketers, and founders** who want an AI that writes in *their* voice, not a generic one
+- **Anyone mid-session** who wants to turn what they're working on into a polished, shareable PDF — without re-explaining the content
 
 ---
 
@@ -51,6 +52,7 @@ No setup, no dependencies, no API keys.
 | [**keen-eyeos**](./keen-eyeos/) | You're designing for iOS, macOS, iPadOS, watchOS, or visionOS and want native-feeling UI, component picks, or HIG-aligned screens | Design plan, wireframes, dev handover spec, device mockup |
 | [**socratic-product**](./socratic-product/) *(socratic-agentic-workflow)* | You have an idea for an AI agent or multi-agent system and want to plan it before writing code | An indexed plan: mission (with how it differs from existing tools), agent specs with contracts and failure paths, a starter repo scaffold tailored to your stack, system logic, and a handover doc with a definition of done |
 | [**tumaini-voice**](./tumaini-voice/) | You want an AI writer that sounds like you — for a blog, brand, or your own voice | An installable writer skill: voice profile + per-format reference docs |
+| [**manifest**](./manifest/) | You want to give the current work a shareable form — say "manifest this" and the skill reads the room and decides the rest, or add intent ("as slides", "one-pager for the board") and it executes against that | A designed PDF: report, slides, data, or mixed — light, never dense |
 
 ---
 
@@ -60,6 +62,7 @@ No setup, no dependencies, no API keys.
 - **"My SwiftUI settings screen feels off, but I can't say why."** → `keen-eyeos` diagnoses the issue and recommends the native fix, with platform-aware reasoning.
 - **"I want to build a multi-agent research tool but don't want to start coding blind."** → `socratic-product` runs a 30-minute structured interview and hands you an indexed plan: `README.md`, `MISSION.md`, `AGENTS.md`, `SCAFFOLD.md`, `LOGIC.md`, and `HANDOVER.md`.
 - **"I want my AI to write newsletter drafts that actually sound like me."** → `tumaini-voice` interviews you (and reads your writing samples) and outputs a new, installable "writes like you" skill.
+- **"Manifest this."** → `manifest` reads the current conversation, decides what form the work should take, and produces a designed document — report, slides, or data — in one call. Or add intent: _"as slides for the board"_ and it executes against that.
 
 ---
 
@@ -71,11 +74,12 @@ No setup, no dependencies, no API keys.
 ├── keen-eyeos/           # Apple platform design companion
 ├── socratic-product/     # Agentic system planning interview
 ├── tumaini-voice/         # Personalized writer skill builder
+├── manifest/              # Turn current work into a polished PDF
 ├── LICENSE
 └── README.md
 ```
 
-Each skill folder follows the same pattern: `SKILL.md` (entry point — paste as a system prompt anywhere, or install directly if you're using Claude), `README.md` (full docs), `CHANGELOG.md` (version history), and a `references/` folder where needed.
+Each skill folder follows the same pattern: `SKILL.md` (entry point — paste as a system prompt anywhere, or install directly if you're using Claude), `README.md` (full docs), `CHANGELOG.md` (version history), and a `references/` or `scripts/` folder where needed.
 
 ---
 
@@ -95,6 +99,7 @@ All skills are MIT-licensed and actively maintained. See each skill's `CHANGELOG
 | keen-eyeos | 1.0 |
 | socratic-product | 0.5.0 |
 | tumaini-voice | 0.1.0 |
+| manifest | 0.2.0 |
 
 ---
 

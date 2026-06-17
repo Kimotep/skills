@@ -7,7 +7,7 @@ Each one is a self-contained system prompt (`SKILL.md`) — paste it into ChatGP
 If you're using Claude specifically, each folder can also be installed directly as a Claude Skill — see [Quick start](#quick-start).
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
-![Skills](https://img.shields.io/badge/skills-5-blue)
+![Skills](https://img.shields.io/badge/skills-6-blue)
 ![Status](https://img.shields.io/badge/status-active-brightgreen)
 
 ---
@@ -53,6 +53,7 @@ No setup, no dependencies, no API keys.
 | [**socratic-product**](./socratic-product/) *(socratic-agentic-workflow)* | You have an idea for an AI agent or multi-agent system and want to plan it before writing code | An indexed plan: mission, agent specs with contracts and failure paths, a starter repo scaffold, system logic, a handover doc — plus a harness root config file (`CLAUDE.md`, `.cursorrules`, etc.) ready to drop in the repo |
 | [**tumaini-voice**](./tumaini-voice/) | You want an AI writer that sounds like you — for a blog, brand, or your own voice | An installable writer skill: voice profile + per-format reference docs |
 | [**manifest**](./manifest/) | You want to give the current work a shareable form — say "manifest this" and the skill reads the room and decides the rest, or add intent ("as slides", "one-pager for the board") and it executes against that | A designed PDF: report, slides, data, or mixed — light, never dense |
+| [**feature-compass**](./feature-compass/) | You're adding a new feature to an existing project and want to align on exactly what it is before building starts | A `[feature]-BRIEF.md` — agreed feature summary, task list, and a ready-to-paste coding session prompt |
 
 ---
 
@@ -63,6 +64,7 @@ No setup, no dependencies, no API keys.
 - **"I want to build a multi-agent research tool but don't want to start coding blind."** → `socratic-product` runs a 30-minute structured interview (all multiple-choice) and hands you an indexed plan plus a ready-to-drop harness config file (`CLAUDE.md`, `.cursorrules`, etc.) for your coding tool.
 - **"I want my AI to write newsletter drafts that actually sound like me."** → `tumaini-voice` interviews you (and reads your writing samples) and outputs a new, installable "writes like you" skill.
 - **"Manifest this."** → `manifest` reads the current conversation, decides what form the work should take, and produces a designed document — report, slides, or data — in one call. Or add intent: _"as slides for the board"_ and it executes against that.
+- **"I want to add a search feature to my app."** → `feature-compass` interviews you (always multiple-choice), reads your project config, and hands back a brief with task list and a ready-to-paste coding session prompt.
 
 ---
 
@@ -75,6 +77,7 @@ No setup, no dependencies, no API keys.
 ├── socratic-product/     # Agentic system planning interview
 ├── tumaini-voice/         # Personalized writer skill builder
 ├── manifest/              # Turn current work into a polished PDF
+├── feature-compass/       # Scope and align on a new feature before building
 ├── LICENSE
 └── README.md
 ```
@@ -100,6 +103,7 @@ All skills are MIT-licensed and actively maintained. See each skill's `CHANGELOG
 | socratic-product | 0.6.0 |
 | tumaini-voice | 0.1.0 |
 | manifest | 0.2.0 |
+| feature-compass | 0.2.0 |
 
 ---
 

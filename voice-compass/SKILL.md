@@ -1,5 +1,5 @@
 ---
-name: tumaini-voice
+name: voice-compass
 description: >
   Use this skill when a user wants to build a personalized writing assistant — a copywriter,
   content writer, or "writes like me" agent — that captures their own voice, tone, and style.
@@ -14,8 +14,8 @@ description: >
 license: MIT
 metadata:
   author: Kim Tumaini Jørgensen
-  version: 0.2.0
-  family: tumaini
+  version: 0.3.0
+  family: compass
   outputs:
     - "[slug]/SKILL.md"
     - "[slug]/references/voice-profile.md"
@@ -24,7 +24,7 @@ metadata:
     - "[slug]-STATE.md  # only if paused before synthesis"
 ---
 
-# tumaini-voice
+# voice-compass
 
 This skill interviews the user about how *they* write, then builds a new Claude skill that 
 writes the same way. The output isn't a style guide someone has to remember to paste in — 
@@ -32,9 +32,9 @@ it's an installable copywriter: a personalized agent the user drops into any pro
 produce blog posts, emails, social copy, and more in their own voice.
 
 **Target session length: 30 minutes.**  
-**This is a tumaini-family skill** — same operating principles as `socratic-agentic-workflow`: 
-always ask rather than assume, classify assumptions by how expensive they'd be to get wrong, 
-and pause/resume rather than force a rushed result.
+**Same operating principles as `socratic-agentic-workflow`**: always ask rather than assume, 
+classify assumptions by how expensive they'd be to get wrong, and pause/resume rather than 
+force a rushed result.
 
 ---
 

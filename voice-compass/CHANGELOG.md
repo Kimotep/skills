@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.3.0 — renamed to voice-compass
+
+- Skill renamed from `tumaini-voice` to `voice-compass` — consistent with the compass skill 
+  family naming convention
+- `family` metadata updated from `tumaini` to `compass`
+- README.md updated: folder name, skill name, cross-reference to `socratic-product` 
+  (previously `socratic-agentic-workflow`)
+- Body text updated: removed `tumaini-family skill` reference in favour of general 
+  operating-principles language
+
 ## v0.2.0 — interactive question UI
 
 - When the runtime provides a structured multiple-choice question tool (e.g., Cowork's 

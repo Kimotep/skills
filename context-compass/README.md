@@ -74,7 +74,7 @@ context-compass/
 context-compass is intentionally light. For a 30-minute structured interview that produces a
 full set of planning documents or a personalized writer skill, see
 [socratic-agentic-workflow](../socratic-product/README.md) or
-[tumaini-voice](../tumaini-voice/README.md). context-compass will say so if a task looks like
+[voice-compass](../voice-compass/README.md). context-compass will say so if a task looks like
 it needs that level of depth.
 
 ---

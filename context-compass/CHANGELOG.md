@@ -20,5 +20,5 @@
 - `references/angles.md` lens library for the "open it up" step, organized by task type
   (build, write, research/decide, fix/debug, plan/organize) plus general fallback lenses
 - Output is a ready-to-run prompt/brief shown in chat, optionally saved as `[slug]-BRIEF.md`
-- Points to `socratic-agentic-workflow` or `tumaini-voice` when a task looks like it needs a
+- Points to `socratic-product` or `voice-compass` when a task looks like it needs a
   deeper session instead

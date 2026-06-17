@@ -153,7 +153,7 @@ If Step 1 reveals the task is actually large — a multi-agent system, or a pers
 writing voice that'll get reused constantly — say so before going further:
 
 > "This sounds bigger than a quick prompt — it might be worth a proper session with
-> [socratic-agentic-workflow / tumaini-voice]. Want the quick version now anyway, or should
+> [socratic-product / voice-compass]. Want the quick version now anyway, or should
 > we switch?"
 
 Let the user choose. Don't assume bigger is better — sometimes a quick prompt now is exactly

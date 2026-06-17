@@ -1,4 +1,4 @@
-# tumaini-voice
+# voice-compass
 
 A skill for Claude that interviews you about how you write, then builds a new Claude skill 
 that writes the same way.
@@ -41,7 +41,7 @@ package it as `.skill` for easy install.
 ## Skill files
 
 ```
-tumaini-voice/
+voice-compass/
 ├── SKILL.md         # Main skill definition and entry point
 ├── INTERVIEW.md     # Question themes, sample analysis, pacing, pause/resume
 ├── SYNTHESIS.md     # Reflection, assumption classification, and confirmation phase
@@ -67,18 +67,18 @@ tumaini-voice/
 
 ---
 
-## Shares a design pattern with socratic-agentic-workflow
+## Shares a design pattern with socratic-product
 
 This skill shares its operating principles with 
-[socratic-agentic-workflow](../socratic-product/README.md) — same Socratic interview pattern, 
-same assumption-classification and pause/resume design. Where socratic-agentic-workflow plans 
-*systems*, tumaini-voice builds *writers*.
+[socratic-product](../socratic-product/README.md) — same Socratic interview pattern, 
+same assumption-classification and pause/resume design. Where socratic-product plans 
+*systems*, voice-compass builds *writers*.
 
 ---
 
 ## Status
 
-Version 0.1.0 — initial release. See [CHANGELOG.md](./CHANGELOG.md).
+Version 0.3.0 — renamed from `tumaini-voice`. See [CHANGELOG.md](./CHANGELOG.md).
 
 Feedback welcome via [tumaini.dk](https://tumaini.dk) or GitHub issues.
 

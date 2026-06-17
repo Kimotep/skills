@@ -32,9 +32,9 @@ Tell the user the slug before generating files:
 
 ## File set — what to generate
 
-Generate all six files in every session. Do not skip any. `[slug]-README.md` is generated
-last, since it indexes the other five — but list it first when presenting the set, since
-it's where the user starts reading.
+Generate all six planning files plus one harness root file in every session. Do not skip any.
+`[slug]-README.md` is generated last, since it indexes the other files — but list it first
+when presenting the set, since it's where the user starts reading.
 
 ---
 
@@ -107,6 +107,73 @@ One short paragraph.]
 ---
 → See [slug]-LOGIC.md for how agents connect in flow.  
 → See [slug]-MISSION.md for the overall purpose.
+```
+
+---
+
+---
+
+### Harness root file
+
+Generated for every session based on the answer to Theme 9. This file goes at the repo root
+and tells the builder's AI coding tool how to work in this project.
+
+**File name by harness:**
+
+| Harness | File |
+|---|---|
+| Claude Code | `CLAUDE.md` |
+| Cursor | `.cursorrules` |
+| Windsurf | `.windsurfrules` |
+| OpenCode | `opencode.json` |
+| Other (named) | whatever the tool's convention is — ask if unknown |
+| None / undecided | `AGENT-INSTRUCTIONS.md` |
+
+**Content template (Markdown harnesses):**
+
+```
+# [Project name] — [harness name] instructions
+
+## What this project is
+[2–3 sentences from [slug]-MISSION.md's "What this is" section.]
+
+## Agent roles
+[One line per agent from [slug]-AGENTS.md — name + one-sentence responsibility only.]
+
+## Constraints
+[Verbatim constraint list from [slug]-HANDOVER.md's "Constraints to respect".]
+
+## Do not
+- Write code outside the scaffold defined in [slug]-SCAFFOLD.md
+- Make decisions not covered in [slug]-AGENTS.md without asking
+- Modify agent boundaries without reviewing [slug]-AGENTS.md first
+
+## Start here
+[First item from [slug]-HANDOVER.md's recommended build order.]
+
+## Reference files
+- [slug]-MISSION.md — why this exists
+- [slug]-AGENTS.md — who does what
+- [slug]-SCAFFOLD.md — repo structure
+- [slug]-LOGIC.md — system flow
+- [slug]-HANDOVER.md — build order and open decisions
+```
+
+**For `opencode.json`**, emit valid JSON instead:
+
+```json
+{
+  "project": "[Project name]",
+  "instructions": "[2–3 sentence mission summary]",
+  "agents": ["[agent name]: [one-line responsibility]"],
+  "constraints": ["[constraint 1]", "..."],
+  "doNot": [
+    "Write code outside the defined scaffold",
+    "Make decisions not covered in AGENTS.md without asking"
+  ],
+  "startHere": "[first build order item]",
+  "referenceFiles": ["MISSION.md", "AGENTS.md", "SCAFFOLD.md", "LOGIC.md", "HANDOVER.md"]
+}
 ```
 
 ---
@@ -352,6 +419,7 @@ the descriptions below are accurate rather than aspirational.
 | [slug]-AGENTS.md | Agent roles, contracts, coordination, failure handling | Before building agents/ |
 | [slug]-SCAFFOLD.md | Starter repo structure and tooling | When setting up the repo |
 | [slug]-LOGIC.md | System flow, branches, and error states | While wiring agents together |
+| [harness filename] | Root instructions for [harness] — drop at repo root | Automatically loaded by your coding tool |
 
 ## Quick start
 [1–2 sentences: create the structure in [slug]-SCAFFOLD.md, then start with 
@@ -396,14 +464,16 @@ Pick up with [next theme]. Do not re-ask resolved themes unless the user wants t
 Generate the five linked files first, then `[slug]-README.md` last. Present them in chat in
 this order:
 
-1. Confirm the slug and file names
-2. Output `[slug]-README.md` first (it's the index), then the other five in the order shown
-   in its table, each in a clearly labelled fenced code block
+1. Confirm the slug, file names, and harness root file name
+2. Output `[slug]-README.md` first (it's the index), then the other five planning files in
+   the order shown in its table, then the harness root file last — each in a clearly labelled
+   fenced code block
 3. End with:
 
-> "All six files are ready, starting with `[slug]-README.md` as the index. Copy them into 
-> your project folder in any order —  
-> `[slug]-HANDOVER.md` is the best starting point for a builder or coding agent.  
+> "All seven files are ready, starting with `[slug]-README.md` as the index. The harness
+> root file ([filename]) goes at the repo root — your [harness] will pick it up automatically.
+> Copy the planning files into your project folder in any order —  
+> `[slug]-HANDOVER.md` is the best starting point for a builder.  
 > Want to rename the project slug, adjust anything, or start a build session now?"
 
 ---

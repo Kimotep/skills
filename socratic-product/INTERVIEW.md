@@ -16,6 +16,30 @@ the user a single question.
 
 ---
 
+## Interview UI rule — mandatory
+
+Every question in this interview MUST be posed using the `AskUserQuestion` tool, not as inline
+text. No "What is X?" or "Tell me about Y" in prose.
+
+Rules:
+- Every question: 2–4 concrete options, short and mutually exclusive
+- Free-text "Other" is automatic — you don't need to add it
+- Use multiSelect only when the question genuinely allows multiple answers (e.g. "which
+  constraints apply?")
+- Do not write questions into the conversation as plain text
+
+**The only exceptions:**
+- Brief inline follow-up to clarify a specific detail in a previous answer ("what exactly did
+  you mean by X?") — return to the tool for the next structured question
+- Summarising what you heard between themes (always prose)
+- The pause/resume offer (prose)
+- The session-open exchange and project naming (prose)
+
+This rule applies to every theme's opening question, vagueness follow-ups, and contradiction
+resolution questions.
+
+---
+
 ## Pause and resume
 
 Around the 15-minute mark, take stock. If most themes are still open and the user seems to be 
@@ -38,9 +62,9 @@ fully formed yet. If unsure which applies, ask the user directly.
 
 ---
 
-## The 8 mandatory themes
+## The 9 mandatory themes
 
-Work through all 8. Order is flexible — let conversation flow — but every theme must be 
+Work through all 9. Order is flexible — let conversation flow — but every theme must be 
 covered before synthesis begins. Mark each as resolved internally before moving on.
 
 ### 1. Mission
@@ -188,3 +212,25 @@ If drift is found, surface it:
 > our earlier answers. Should I incorporate that more centrally?"
 
 Then proceed to [`SYNTHESIS.md`](./SYNTHESIS.md).
+
+---
+
+### 9. Development harness
+_What AI coding tool will the builder use to work in this repo?_
+
+Key questions to draw out:
+- Which harness, if any, will the builder use?
+- This drives which root config file gets generated — so a concrete answer matters.
+
+Suggested `AskUserQuestion` options:
+- Claude Code → generates `CLAUDE.md`
+- Cursor → generates `.cursorrules`
+- Windsurf → generates `.windsurfrules`
+- OpenCode → generates `opencode.json`
+- Other (free text)
+- No AI coding harness / undecided
+
+If "Other" is selected, ask for the tool name and its root config filename convention.
+If "undecided", note it — a generic `AGENT-INSTRUCTIONS.md` will be generated as a fallback.
+
+Resolved when: a specific harness is named (or "none/undecided" is confirmed).

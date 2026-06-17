@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.6.0
+
+Interview is now fully multiple-choice UI, and the output includes a harness root config file.
+
+- **Multiple-choice interview enforced.** Every interview question must use the `AskUserQuestion`
+  tool — no inline text questions. Options are 2–4 choices with automatic freeform fallback. The
+  only exceptions are brief inline detail follow-ups, session-open prose, and theme summaries.
+  Rule documented in a new "Interview UI rule" section in INTERVIEW.md.
+- **New Theme 9: Development harness.** Asks which AI coding tool the builder will use —
+  Claude Code, Cursor, Windsurf, OpenCode, other, or none. Drives which root config file is
+  generated.
+- **New harness root config file in output.** Every session now produces a seventh file:
+  `CLAUDE.md`, `.cursorrules`, `.windsurfrules`, `opencode.json`, or `AGENT-INSTRUCTIONS.md`
+  (fallback), depending on Theme 9. Content is a compressed, builder-facing version of the plan:
+  mission summary, agent roles, constraints, do-nots, first task, and reference file list.
+  For OpenCode, emitted as valid JSON. Template and file-name map documented in OUTPUT.md.
+- **README.md template updated** to include the harness file row.
+- **Delivery message updated** to reference the seventh file and tell the user where to put it.
+
 ## v0.5.0
 
 Agent specs now meet a quality bar, the mission is checked against what already exists, and 

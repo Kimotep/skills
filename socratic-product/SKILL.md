@@ -5,22 +5,24 @@ description: >
   Triggers include: "help me plan an AI workflow", "I want to build an agent system", 
   "help me structure my agentic project", "I have an idea for an AI tool", or any request 
   to think through multi-agent logic, file scaffolding, or system design for an LLM-powered 
-  project. This skill runs a structured, time-boxed Socratic interview (target: 30 minutes) 
-  and produces a linked set of MD documents ready for handover to a builder or coding agent — 
-  including a starter repo structure tailored to the project's type and stack, and agent 
-  specs written to a defined quality standard (responsibilities, I/O contracts, tool scope, 
-  and failure handling).
+  project. This skill runs a structured, time-boxed Socratic interview (target: 30 minutes)
+  using multiple-choice UI for every question, and produces a linked set of MD documents plus
+  a harness-specific root config file ready to drop into the repo — including a starter repo
+  structure tailored to the project's type and stack, agent specs written to a defined quality
+  standard (responsibilities, I/O contracts, tool scope, and failure handling), and a root
+  config file for Claude Code, Cursor, Windsurf, OpenCode, or other AI coding tools.
 license: MIT
 metadata:
   author: Kim Tumaini Jørgensen
-  version: 0.5.0
+  version: 0.6.0
   outputs:
-    - README.md  # index linking the other five files, generated last
-    - MISSION.md  # now includes "How this differs" from comparable tools
-    - AGENTS.md  # each agent now specced with I/O contract, tool scope, and failure path
+    - README.md  # index linking the other files, generated last
+    - MISSION.md  # includes "How this differs" from comparable tools
+    - AGENTS.md  # each agent specced with I/O contract, tool scope, and failure path
     - SCAFFOLD.md  # starter repo structure tailored to the project type
     - LOGIC.md
-    - HANDOVER.md  # now includes a definition of done and a "Watch for" pitfalls list
+    - HANDOVER.md  # definition of done, build order, MVP cut line, pitfalls
+    - CLAUDE.md / .cursorrules / .windsurfrules / opencode.json / AGENT-INSTRUCTIONS.md  # harness root file
     - STATE.md  # only if the session is paused before synthesis
 ---
 
@@ -43,12 +45,14 @@ implementation".
 
 The skill runs in three phases:
 
-1. **Interview** — adaptive, Socratic questioning across 8 fixed themes plus drift detection
+1. **Interview** — adaptive, Socratic questioning across 9 fixed themes using multiple-choice
+   UI (`AskUserQuestion` tool) for every question, plus drift detection
 2. **Synthesis** — AI reflects on answers, flags contradictions, surfaces assumptions, and 
    runs an agent design pass that checks every agent role against five quality conventions
-3. **Output** — two silent pre-generation passes ground the scaffold and mission in current 
-   reality (using `WebSearch` when relevant), then generate a named, linked set of MD files — 
-   including an index file — the user can take away
+3. **Output** — two silent pre-generation passes ground the scaffold and mission in current
+   reality (using `WebSearch` when relevant), then generate a named, linked set of MD files
+   plus a harness root config file — the user can take everything away ready to drop into a
+   repo
 
 Read all linked documents before starting:
 - [`INTERVIEW.md`](./INTERVIEW.md) — question themes, pacing rules, and drift detection logic
